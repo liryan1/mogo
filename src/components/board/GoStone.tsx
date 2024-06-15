@@ -16,7 +16,8 @@ export interface GoStoneProps {
   position: GoStonePosition;
   size?: number;
   className?: string;
-  onMouseMove?: React.MouseEventHandler<HTMLImageElement> | undefined;
+  onMouseEnter?: React.MouseEventHandler<HTMLImageElement> | undefined;
+  onMouseLeave?: React.MouseEventHandler<HTMLImageElement> | undefined;
 }
 
 /**
@@ -24,11 +25,19 @@ export interface GoStoneProps {
  * WARNING: parent div must be relative, otherwise position will be relative to
  * upper parent div
  */
-export function GoStone({ color, position, className, onMouseMove, size = 20 }: GoStoneProps) {
+export function GoStone({
+  color,
+  position,
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  size = 20,
+}: GoStoneProps) {
   const src = `/images/${color}-stone.png`;
   return (
     <Image
-      onMouseMove={onMouseMove}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={cn("absolute", className)}
       style={position}
       alt=""

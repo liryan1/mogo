@@ -11,7 +11,7 @@ export enum StoneColor {
 }
 
 export interface MoveData {
-  name: string
-  desc: string
-  goStone: GoStoneProps
+  name: string;
+  desc: string;
+  goStone: GoStoneProps;
 }
