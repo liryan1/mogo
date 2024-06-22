@@ -34,6 +34,7 @@ export class GoBoardSpecs {
   }
 
   /**
+   * Gets the absolute stone position on the board taking into account cell and stone offsets
    * @param x 0-indexed x-position from the left of the board
    * @param y 0-indexed y-position from the top of the board
    */

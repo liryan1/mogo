@@ -1,8 +1,7 @@
 import { EmptyBoard } from "@/components/board/EmptyBoard";
-import { GoStone } from "./GoStone";
-import { MoveData, StoneColor } from "./interface";
 import { GoBoardSpecs } from "@/lib/goBoardSpecs";
-import { HoverGoStoneProps, HoverGoStone } from "./HoverGoStone";
+import { HoverGoStone, HoverGoStoneProps } from "./HoverGoStone";
+import { OneWorldMove } from "@/lib/interface";
 
 interface GoBoardProps {
   /**
@@ -15,31 +14,23 @@ interface GoBoardProps {
    * @default 19
    */
   lines?: number;
+
+  moves?: OneWorldMove[]
 }
 
-export function GoBoard({ size = 600, lines = 19 }: GoBoardProps) {
+export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
   const goBoardSpecs = new GoBoardSpecs(size, lines);
   const { stoneSize } = goBoardSpecs.getAllSpecs();
-  const goStonesList: HoverGoStoneProps[] = [
-    {
-      color: StoneColor.BLACK,
-      position: goBoardSpecs.getPosition(15, 3),
-      size: stoneSize,
-      tooltipText: "Black stone",
-    },
-    {
-      color: StoneColor.WHITE,
-      position: goBoardSpecs.getPosition(2, 3),
-      size: stoneSize,
-      tooltipText: "White stone",
-    },
-  ];
+  const goStonesList: HoverGoStoneProps[] = moves?.map(move => ({
+    ...move,
+    position: goBoardSpecs.getPosition(move.coordinate.x, move.coordinate.y)
+  })) ?? []
 
   return (
     <div className={`relative overflow-hidden w-[${size}px] h-[${size}px]`}>
       <EmptyBoard {...goBoardSpecs.getAllSpecs()} />
       {goStonesList.map((goStone, idx) => (
-        <HoverGoStone key={idx} {...goStone} />
+        <HoverGoStone key={idx} {...goStone} size={stoneSize} />
       ))}
     </div>
   );

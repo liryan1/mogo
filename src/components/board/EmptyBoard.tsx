@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import { Coordinate } from "./interface";
+import { Coordinate } from "../../lib/interface";
 
 const resolution = 4;
 const starPoints = [
