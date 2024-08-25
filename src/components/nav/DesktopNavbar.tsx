@@ -20,9 +20,6 @@ const baseUlWithCardClassName =
 export function DesktopNavMenu() {
   return (
     <NavigationMenuList>
-      <Link href="/">
-        <Logo h={36} />
-      </Link>
       {navigationMenuConfig.map((c, i) => {
         if (c.type === "hover") {
           return (
@@ -39,7 +36,7 @@ export function DesktopNavMenu() {
                           className="flex h-full w-full select-none flex-col justify-begin rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
                           href={c.card.href}
                         >
-                          <Logo h={36} />
+                          <Logo />
                           <div className="mb-2 mt-4 text-lg font-medium">
                             {c.card.title}
                           </div>

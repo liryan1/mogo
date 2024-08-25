@@ -19,7 +19,7 @@ export function HoverGoStone({ color, position, className, description, size = 2
             className={cn("absolute", className)}
             style={position}
             alt=""
-            src={`/images/${color}-stone.png`}
+            src={`/images/${color}-stone2.png`}
             width={size}
             height={size}
           />

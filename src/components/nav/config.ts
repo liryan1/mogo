@@ -18,7 +18,11 @@ interface MenuConfig {
 export const navigationMenuConfig: MenuConfig[] = [
   {
     type: "normal",
-    data: [{ title: "About", href: "/about", description: "" }],
+    data: [{ title: "About MoGO", href: "/", description: "" }],
+  },
+  {
+    type: "normal",
+    data: [{ title: "Donate", href: "/", description: "" }],
   },
   // TODO: Create pages when museum details become available
   // {

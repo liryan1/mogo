@@ -13,7 +13,10 @@ export default function Home() {
       <Navbar>
         <MuseumHome />
       </Navbar>
-      <div className="flex items-center justify-center my-10">
+      <div className="flex flex-col items-center justify-center gap-6 my-20 mb-[250px] h-[100vh]">
+        <h1 className="text-4xl">
+          One World, One Game
+        </h1>
         <GoBoard size={800} moves={oneWorldOneGame.getMoves()} />
       </div>
     </main>

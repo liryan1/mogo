@@ -1,11 +1,10 @@
 "use client";
 
+import { NavigationMenu } from "@/components/ui/navigation-menu";
+import { Logo } from "../Logo";
 import { DesktopNavMenu } from "./DesktopNavbar";
 import { MobileNavbar } from "./MobileNavbar";
-import { NavigationMenu } from "@/components/ui/navigation-menu";
-import { Button } from "../ui/button";
-import { BsSearch } from "@react-icons/all-files/bs/BsSearch";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import Link from "next/link";
 
 export function Navbar({
   children,
@@ -14,14 +13,14 @@ export function Navbar({
 }>) {
   return (
     <header className="">
-      <AuroraBackground className="min-h-[40vh]">
+      <div className="min-h-[40vh]">
         <div className="mx-auto max-w-[100%] sm:max-w[95%] md:max-w-[90%] lg:max-w-[85%]">
           <div className="flex px-1 md:px-0 pt-1 md:pt-6 gap-1 items-center">
             <NavigationMenu className="hidden md:flex max-w-full items-center justify-between">
+              <Link href="/">
+                <Logo />
+              </Link>
               <DesktopNavMenu />
-              <Button disabled variant="ghost" size="icon">
-                <BsSearch />
-              </Button>
             </NavigationMenu>
             <div className="w-full flex items-center md:hidden">
               <MobileNavbar />
@@ -29,7 +28,7 @@ export function Navbar({
           </div>
           {children}
         </div>
-      </AuroraBackground>
+      </div>
     </header>
   );
 }

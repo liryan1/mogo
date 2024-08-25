@@ -34,11 +34,13 @@ export function EmptyBoard({
   lineGap,
 }: EmptyBoardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const boardImage = "/images/marble.jpg"
+  const lineColor = "#555a67"
 
   const drawBackground = useCallback(
     (context: CanvasRenderingContext2D) => {
       const image = new Image();
-      image.src = "/images/wood4.jpg";
+      image.src = boardImage;
       image.width = size;
       image.height = size;
       image.onload = () => {
@@ -50,7 +52,7 @@ export function EmptyBoard({
 
   const drawLine = useCallback(
     (ctx: CanvasRenderingContext2D, c1: Coordinate, c2: Coordinate) => {
-      ctx.strokeStyle = "black";
+      ctx.strokeStyle = lineColor;
       ctx.lineWidth = lineWidth;
       ctx.beginPath();
       ctx.moveTo(c1.x, c1.y);
@@ -65,7 +67,7 @@ export function EmptyBoard({
       const x = cellSize * c.x + lineGap;
       const y = cellSize * (lines - 1 - c.y) + lineGap;
 
-      ctx.fillStyle = "black";
+      ctx.fillStyle = lineColor;
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       ctx.fill();

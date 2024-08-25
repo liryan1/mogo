@@ -20,7 +20,7 @@ export function MobileNavbar() {
   return (
     <div className="w-full flex items-center justify-between">
       <Link href="/">
-        <Logo h={36} />
+        <Logo />
       </Link>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
