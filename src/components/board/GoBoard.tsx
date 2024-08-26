@@ -3,10 +3,9 @@
 import { EmptyBoard } from "@/components/board/EmptyBoard";
 import { GoBoardSpecs } from "@/lib/goBoardSpecs";
 import { OneWorldMove } from "@/lib/interface";
-import { GoBoardNav } from "./GoBoardNav";
-import { HoverGoStone, HoverGoStoneProps } from "./HoverGoStone";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { GoBoardNav } from "./GoBoardNav";
+import { OwogMove, OwogMoveProps } from "./OwogMove";
 
 interface GoBoardProps {
   /**
@@ -23,18 +22,18 @@ interface GoBoardProps {
   moves?: OneWorldMove[]
 }
 
-/**
- * The search parameter move=123 gives the current move of the board
- */
 export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
   const goBoardSpecs = new GoBoardSpecs(size, lines);
   const { stoneSize } = goBoardSpecs.getAllSpecs();
-  const goStonesList: HoverGoStoneProps[] = moves?.map(move => ({
+  const goStonesList: OwogMoveProps[] = moves?.map(move => ({
     ...move,
     position: goBoardSpecs.getPosition(move.coordinate.x, move.coordinate.y)
   })) ?? []
 
   const [currentMove, setCurrentMove] = useState(goStonesList.length)
+
+  const currPlayer = currentMove ? goStonesList[currentMove - 1].player : undefined
+  const player = currPlayer ? `${currPlayer.last}, ${currPlayer.first} ${currPlayer.rank}` : undefined
 
   return (
     <div>
@@ -42,10 +41,21 @@ export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
         <EmptyBoard {...goBoardSpecs.getAllSpecs()} />
         {goStonesList.slice(0, currentMove)
           .map((goStone, idx) => (
-            <HoverGoStone key={idx} {...goStone} size={stoneSize} />
+            <OwogMove
+              key={idx}
+              {...goStone}
+              size={stoneSize}
+              className="transform transition duration-500 hover:scale-125 cursor-pointer"
+              isCurrentMove={idx === currentMove - 1}
+            />
           ))}
       </div>
-      <GoBoardNav totalMoves={goStonesList.length} currentMove={currentMove} onCurrentMoveChange={setCurrentMove} />
+      <GoBoardNav
+        totalMoves={goStonesList.length}
+        currentMove={currentMove}
+        onCurrentMoveChange={setCurrentMove}
+        player={player}
+      />
     </div>
   );
 }

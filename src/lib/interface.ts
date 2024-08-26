@@ -11,7 +11,7 @@ export enum StoneColor {
 export interface OneWorldMove {
   color: StoneColor;
   coordinate: Coordinate;
-  description: string;
+  player: OneWorldPlayerInfo;
 }
 
 export interface GoStoneProps {
@@ -28,4 +28,15 @@ export interface GoStoneProps {
 export interface StonePosition {
   top: number;
   left: number;
+}
+
+export interface OneWorldPlayerInfo {
+  title?: string
+  first: string
+  last: string
+  rank: string
+  worldTitles?: string
+  imageFileName?: string
+  affiliation?: string
+  bio: string
 }

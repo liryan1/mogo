@@ -3,6 +3,9 @@
 import { useCallback, useEffect, useRef } from "react";
 import { Coordinate } from "../../lib/interface";
 
+const boardImage = "/images/go/marble.jpg"
+const lineColor = "#555a67"
+
 const resolution = 4;
 const starPoints = [
   [3, 3],
@@ -34,8 +37,6 @@ export function EmptyBoard({
   lineGap,
 }: EmptyBoardProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const boardImage = "/images/marble.jpg"
-  const lineColor = "#555a67"
 
   const drawBackground = useCallback(
     (context: CanvasRenderingContext2D) => {

@@ -17,7 +17,10 @@ export default function Home() {
         <h1 className="text-4xl">
           One World, One Game
         </h1>
-        <GoBoard size={800} moves={oneWorldOneGame.getMoves()} />
+        <h3 className="text-muted-foreground">
+          Hover over the stones to reveal the players!
+        </h3>
+        <GoBoard size={750} moves={oneWorldOneGame.getMoves()} />
       </div>
     </main>
   );

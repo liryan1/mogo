@@ -7,9 +7,10 @@ interface GoBoardNavProps {
   totalMoves: number
   currentMove: number
   onCurrentMoveChange: (m: number) => void
+  player?: string
 }
 
-export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoBoardNavProps) {
+export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange, player }: GoBoardNavProps) {
   const [moveInput, setMoveInput] = useState(currentMove.toString())
 
   const handleCurrentMoveChange = (m: number | string) => {
@@ -31,7 +32,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(0),
       child: <>
         <span className="sr-only">Clear the go board</span>
-        <ChevronFirst className="h-6 w-6" />
+        <ChevronFirst className="h-5 w-5" />
       </>,
     },
     {
@@ -39,7 +40,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(currentMove - 5),
       child: <>
         <span className="sr-only">Go back five moves</span>
-        <ChevronsLeft className="h-6 w-6" />
+        <ChevronsLeft className="h-5 w-5" />
       </>,
     },
     {
@@ -47,7 +48,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(currentMove - 1),
       child: <>
         <span className="sr-only">Go back one move</span>
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5" />
       </>,
     },
   ]
@@ -58,7 +59,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(currentMove + 1),
       child: <>
         <span className="sr-only">Go to the next move</span>
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5" />
       </>,
     },
     {
@@ -66,7 +67,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(currentMove + 5),
       child: <>
         <span className="sr-only">Go forward five moves</span>
-        <ChevronsRight className="h-6 w-6" />
+        <ChevronsRight className="h-5 w-5" />
       </>,
     },
     {
@@ -74,7 +75,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
       onClick: () => handleCurrentMoveChange(totalMoves),
       child: <>
         <span className="sr-only">Go to the last move</span>
-        <ChevronLast className="h-6 w-6" />
+        <ChevronLast className="h-5 w-5" />
       </>,
     },
   ]
@@ -86,7 +87,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
           <Button
             key={`left-pagination-${i}`}
             variant="outline"
-            className="h-10 w-10 p-0"
+            className="h-8 w-8 p-0"
             onClick={c.onClick}
             disabled={c.disabled}
           >
@@ -94,7 +95,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
           </Button>
         ))}
         <Input
-          className="w-14 h-10 p-0 text-center text-base"
+          className="w-14 h-8 p-0 text-center text-base"
           value={moveInput}
           onChange={(e) => setMoveInput(e.target.value)}
           onBlur={() => handleCurrentMoveChange(moveInput)}
@@ -104,7 +105,7 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
           <Button
             key={`right-pagination-${i}`}
             variant="outline"
-            className="h-10 w-10 p-0"
+            className="h-8 w-8 p-0"
             onClick={c.onClick}
             disabled={c.disabled}
           >
@@ -116,6 +117,9 @@ export function GoBoardNav({ totalMoves, currentMove, onCurrentMoveChange }: GoB
         <span className="hidden sm:inline">Move </span>
         {currentMove} of <span className="font-medium">{totalMoves}</span>
       </div>
+      {player && <div className="absolute text-sm font-semibold left-0">
+        {player}
+      </div>}
     </div>
   )
 }

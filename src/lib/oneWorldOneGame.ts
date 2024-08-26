@@ -1,4 +1,4 @@
-import { OneWorldMove, StoneColor } from "./interface";
+import { OneWorldMove, OneWorldPlayerInfo, StoneColor } from "./interface";
 
 export class OneWorldOneGame {
   /**
@@ -65,7 +65,7 @@ export class OneWorldOneGame {
     return {
       color: this.parseColor(color),
       coordinate: this.parseCoordinate(coord),
-      description: this.parseDescription(descriptionString),
+      player: this.parseDescription(descriptionString),
     }
   }
 
@@ -92,7 +92,16 @@ export class OneWorldOneGame {
     }
   }
 
-  private parseDescription(d: string) {
-    return d.slice(2, d.length - 1)
+  private parseDescription(info: string): OneWorldPlayerInfo {
+    const result = {} as any;
+    const lines = info.slice(2, info.length - 1).split('\n');
+
+    lines.forEach(line => {
+      const [key, value] = line.split(': ').map(part => part.trim());
+
+      result[key] = value;
+    });
+
+    return result as OneWorldPlayerInfo;
   }
 }
