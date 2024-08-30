@@ -6,6 +6,6 @@ const sgf = getSgf()
 export const oneWorldOneGame = new OneWorldOneGame(sgf)
 
 export function getSgf() {
-  const filePath = path.join(process.cwd(), "public", "test_cgoban.sgf")
+  const filePath = path.join(process.cwd(), "public", "demo-1293208.sgf")
   return readFileSync(filePath).toString()
 }

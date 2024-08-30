@@ -99,7 +99,7 @@ export class OneWorldOneGame {
     lines.forEach(line => {
       const [key, value] = line.split(': ').map(part => part.trim());
 
-      result[key] = value;
+      result[key.toLowerCase()] = value;
     });
 
     return result as OneWorldPlayerInfo;

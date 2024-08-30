@@ -36,8 +36,8 @@ export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
   const player = currPlayer ? `${currPlayer.last}, ${currPlayer.first} ${currPlayer.rank}` : undefined
 
   return (
-    <div>
-      <div className={`relative overflow-hidden w-[${size}px] h-[${size}px]`}>
+    <div> {/** Extra div needed here to prevent outside styles spilling into board styles */}
+      <div className={`inset-0 relative overflow-hidden w-[${size}px] h-[${size}px]`}>
         <EmptyBoard {...goBoardSpecs.getAllSpecs()} />
         {goStonesList.slice(0, currentMove)
           .map((goStone, idx) => (
@@ -45,7 +45,7 @@ export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
               key={idx}
               {...goStone}
               size={stoneSize}
-              className="transform transition duration-500 hover:scale-125 cursor-pointer"
+              className="transform transition duration-500 hover:scale-125 cursor-pointer hover:z-30"
               isCurrentMove={idx === currentMove - 1}
             />
           ))}

@@ -13,12 +13,12 @@ export default function Home() {
       <Navbar>
         <MuseumHome />
       </Navbar>
-      <div className="flex flex-col items-center justify-center gap-6 my-20 mb-[250px] h-[100vh]">
+      <div className="flex flex-col items-center justify-center gap-6 my-10 mb-[250px] h-[100vh]">
         <h1 className="text-4xl">
           One World, One Game
         </h1>
         <h3 className="text-muted-foreground">
-          Hover over the stones to reveal the players!
+          Click on the stones to reveal the player!
         </h3>
         <GoBoard size={750} moves={oneWorldOneGame.getMoves()} />
       </div>

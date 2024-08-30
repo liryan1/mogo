@@ -35,7 +35,6 @@ export interface OneWorldPlayerInfo {
   first: string
   last: string
   rank: string
-  worldTitles?: string
   imageFileName?: string
   affiliation?: string
   bio: string

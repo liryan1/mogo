@@ -1,11 +1,13 @@
 "use client"
 
 import { cn } from "@/lib/utils";
+import { FaRegCircle } from "react-icons/fa";
 import Image from "next/image";
 import { GoStoneProps, OneWorldPlayerInfo, StoneColor } from "../../lib/interface";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Circle } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+
+const maxNameLengthForSmallerFont = 16
 
 export interface OwogMoveProps extends GoStoneProps {
   player: OneWorldPlayerInfo;
@@ -16,54 +18,63 @@ export interface OwogMoveProps extends GoStoneProps {
  * One World One Game Move
  */
 export function OwogMove({ color, position, className, player, size = 20, isCurrentMove }: OwogMoveProps) {
-  // 2 circles of different sizes are touching in the upper left
-  // By what distance do we need to shift the smaller circle such that both circles are centered?
-  // shift the smaller circle down and right by R(1-r/R)
-  // const markerSize = size / 1.6
-  // const marker = isCurrentMove ? (
-  //   <Circle
-  //     className="absolute z-20"
-  //     style={{
-  //       top: position.top,
-  //       left: position.left,
-  //       height: markerSize,
-  //       width: markerSize,
-  //       color: color === StoneColor.BLACK ? StoneColor.WHITE : StoneColor.BLACK
-  //     }}
-  //   />
-  // ) : undefined
+  const defaultPlayerImageFileName = `${player.last.toLowerCase()}_${player.first.toLowerCase()}.jpg`
+  const markerSize = size / 1.8
+  const marker = isCurrentMove ? (
+    <FaRegCircle
+      style={{
+        top: position.top,
+        left: position.left,
+        height: markerSize,
+        width: markerSize,
+        color: color === StoneColor.BLACK ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)',
+      }}
+    />
+  ) : undefined
+
+  const name = `${player.title ? `${player.title} ` : ""}${player.last}, ${player.first}`
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Image
-            className={cn("absolute z-10", className)}
-            style={position}
-            alt=""
-            src={`/images/go/${color}-stone.png`}
-            width={size}
-            height={size}
-          />
-        </TooltipTrigger>
-        <TooltipContent className="max-w-80 space-y-4 px-4 py-4">
-          <div className="flex justify-between gap-8">
-            <div>
-              <p className="text-lg">{player.title ? `${player.title} ` : ""}{player.last}, {player.first}</p>
-              <p>{player.rank}</p>
-              {player.affiliation && <p>{player.affiliation}</p>}
-              {player.worldTitles && <p>World titles: {player.worldTitles}</p>}
+    <Popover>
+      <PopoverTrigger asChild>
+        <div className={cn("absolute z-10", className)} style={position}>
+          <div className="relative">
+            <Image
+              className=" aspect-square object-contain"
+              alt={`${color}-stone`}
+              src={`/images/go/${color}-stone.png`}
+              width={size}
+              height={size}
+            />
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              {marker}
             </div>
-            <Avatar className="h-16 w-16 text-primary text-4xl">
-              <AvatarImage src={`/images/player/${player.imageFileName}`} />
-              <AvatarFallback>
-                {player.first.at(0)?.toUpperCase()}{player.last.at(0)?.toUpperCase()}
-              </AvatarFallback>
-            </Avatar>
           </div>
-          <div>{player.bio}</div>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+        </div>
+      </PopoverTrigger>
+      <PopoverContent className="max-w-120 space-y-4 px-4 py-4">
+        <div className="flex justify-between gap-4">
+          <div>
+            <p style={{
+              fontSize: `${name.length < maxNameLengthForSmallerFont ? 18 : 14}px`,
+              lineHeight: `${name.length < maxNameLengthForSmallerFont ? 28 : 20}px`,
+            }}>{name}</p>
+            <p className="text-xs">{player.rank}</p>
+            {player.affiliation && (
+              <p className="text-xs text-muted-foreground overflow-clip whitespace-nowrap">
+                {player.affiliation}
+              </p>
+            )}
+          </div>
+          <Avatar className="h-16 w-16 text-primary text-3xl">
+            <AvatarImage src={`/images/player/${player.imageFileName ?? defaultPlayerImageFileName}`} />
+            <AvatarFallback>
+              {player.last.at(0)?.toUpperCase()}{player.first.at(0)?.toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        </div>
+        <p className="text-xs text-justify">{player.bio}</p>
+      </PopoverContent>
+    </Popover>
   );
 }
