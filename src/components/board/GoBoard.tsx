@@ -5,7 +5,7 @@ import { GoBoardSpecs } from "@/lib/goBoardSpecs";
 import { OneWorldMove } from "@/lib/interface";
 import { useState } from "react";
 import { GoBoardNav } from "./GoBoardNav";
-import { OwogMove, OwogMoveProps } from "./OwogMove";
+import { GoMove, GoMoveProps } from "./GoMove";
 
 interface GoBoardProps {
   /**
@@ -25,7 +25,7 @@ interface GoBoardProps {
 export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
   const goBoardSpecs = new GoBoardSpecs(size, lines);
   const { stoneSize } = goBoardSpecs.getAllSpecs();
-  const goStonesList: OwogMoveProps[] = moves?.map(move => ({
+  const goStonesList: GoMoveProps[] = moves?.map(move => ({
     ...move,
     position: goBoardSpecs.getPosition(move.coordinate.x, move.coordinate.y)
   })) ?? []
@@ -36,12 +36,12 @@ export function GoBoard({ moves, size = 600, lines = 19 }: GoBoardProps) {
   const player = currPlayer ? `${currPlayer.last}, ${currPlayer.first} ${currPlayer.rank}` : undefined
 
   return (
-    <div> {/** Extra div needed here to prevent outside styles spilling into board styles */}
+    <div className="my-4"> {/** Extra div needed here to prevent outside styles spilling into board styles */}
       <div className={`inset-0 relative overflow-hidden w-[${size}px] h-[${size}px]`}>
         <EmptyBoard {...goBoardSpecs.getAllSpecs()} />
         {goStonesList.slice(0, currentMove)
           .map((goStone, idx) => (
-            <OwogMove
+            <GoMove
               key={idx}
               {...goStone}
               size={stoneSize}

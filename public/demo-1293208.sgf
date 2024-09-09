@@ -16,107 +16,139 @@ RU[AGA]
 ;B[pd]C[First: Mingming
 Last: Yin
 Rank: 1p
+Country: CN
 Affiliation: Chinese Weiqi Association
 Bio: Mingming Yin (Known as Stephanie Yin) currently serves as the Vice President of the American Go Association and the founder and President of the New York Institute of Go. Yin is known for her contributions to promoting Go in North America, particularly through educational programs, and her role as a representative in high-profile international Go events.]
 ;W[dp]C[Title: Dr.
 First: Ryan
 Last: Li
 Rank: 4p
+Country: CA
 Affiliation: North American Go Federation
-Bio: Ryan Li is a professional 4 dan and the current North American Professional Go Champion. He became professional during the 3rd AGA professional qualification tournament and reached 4 dan in December 2022. Li holds a PhD from Yale University specializing in climate dynamics and change. His most notable achievement in Go is progressing to the top 16 of the 3rd MLily Cup with wins against Cheng Honghao 2p and world champion Chen Yaoye 9p. Li is currently working as a Software Engineer at Amazon.  ]
+Bio: Ryan Li is a professional 4 dan and the current North American Professional Go Champion. He became 1p in the 3rd AGA professional qualification tournament and reached 4 dan in December 2022. Li holds a PhD from Yale University specializing in cloud physics and climate change. His most notable achievement in Go is progressing to the top 16 of the 3rd MLily Cup with wins against Cheng Honghao 2p and world champion Chen Yaoye 9p. Li is currently working as a Software Engineer at Amazon.]
 ;B[pp]C[First: Andy
 Last: Liu
 Rank: 1p
+Country: US
 Affiliation: North American Go Federation
 Bio: Andy Liu was the first American Go Association certified professional in 2012. He started playing Go at the age of 8 and became the youngest US Open Winner in 2006 (at the time) and the 2009 North American Masters Champion. Liu currently is working in the Financial Field. ]
 ;W[dc]C[First: Pavol
 Last: Lisy
 Rank: 2p
-Affiliation: European Go Federation
+Country: SK
+Affiliation: European Go Federation 
 Bio: Pavol Lisy was the first European Go Federation certified professional in 2014. He learned to play Go at the age of 5. After studying for 3 months in Korea in 2009, Lisy got motivated to become better， then he went to China to study Go in 2014. Besides Go, Lisy likes to do sports, especially football.]
 ;B[ce]C[First: Alexander
 Last: Qi
 Rank: 1p
+Country: US
 Affiliation: North American Go Federation
 Bio: Alexander Qi was certified as Professional 1 dan by the NAGF in 2022 at the age of 14. Qi started playing Go at the age of 8. ]
 ;W[ci]C[First: Ali
 Last: Jabarin
 Rank: 2p
+Country: IL
 Affiliation: European Go Federation
-Bio:]
+Bio: Ali Started playing go in 2006 at the age of 12. He studied Go in Korea and China after becoming pro in 2014. Ali won the European Grand Slam in 2016 and the European Grand Prix in 2018.]
 ;B[fd]C[First: Calvin
-Last: Sun
+Last: Sun 
 Rank: 1p
+Country: US
 Affiliation: North American Go Federation
 Bio:]
-;W[de]C[First: Mateuz
+;W[de]C[First: Mateusz
 Last: Surma
 Rank: 3p
-Affiliation: European Go Federation
-Bio:]
-;B[df]C[First: Eric
-Last: Lui
+Country: PL
+Affiliation:]
+;B[df]C[First: Eric 
+Last: Lui 
 Rank: 2p
+Country: US
 Affiliation: North American Go Federation
 Bio:]
 ;W[ee]C[First: Artem
-Last: Kachanovskyi
+Last: Kachanovskyi 
 Rank: 3p
+Country: UA
 Affiliation: European Go Federation
 Bio:]
 ;B[cd]C[First: Michael
-Last: Chen
+Last: Chen 
 Rank: 1p
+Country: US
 Affiliation: North American Go Federation
 Bio:]
 ;W[fc]C[First: Andrii
-Last: Kravets
+Last: Kravets 
 Rank: 1p
+Country: UA
 Affiliation: European Go Federation
 Bio:]
 ;B[cc]C[First: William
 Last: Shi
 Rank: 1p
+Country: CA
 Affiliation: North American Go Federation
 Bio:]
 ;W[eb]C[First: Tanguy
-Last: Le Calvé
+Last: Le Calvé 
 Rank: 1p
+Country: FR
 Affiliation: European Go Federation
 Bio:]
 ;B[cg]C[First: Kevin
 Last: Yang
 Rank: 1p
+Country: US
 Affiliation: North American Go Federation
 Bio:]
 ;W[cn]C[First: Stanisław
 Last: Frejlak
 Rank: 1p
+Country: PL
 Affiliation: European Go Federation
 Bio:]
 ;B[dm]C[First: Bill
 Last: Lin
 Rank: 1p
+Country: CA
 Affiliation: North American Go Federation
 Bio:]
 ;W[dn]C[First: Jan
-Last: Simara
+Last: Simara 
 Rank: 1p
+Country: CZ
 Affiliation: European Go Federation
 Bio:]
 ;B[fm]C[First: Jiseok
 Last: Kim
 Rank: 9p
+Country: KR
 Affiliation: Korean Baduk Association
 Bio:]
 ;W[nq]C[First: Xuanhao
 Last: Li
 Rank: 9p
+Country: CN
 Affiliation: Chinese Weiqi Association
 Bio:]
-;B[lq]C[First: Yuta
+;B[lq]C[First: Yuta  
 Last: Iyama
 Rank: 9p
+Country: JP
 Affiliation: Nihon Ki-in
+Bio:]
+;W[qc]C[First: Dongyun  
+Last: Kang
+Rank: 9p
+Country: KR
+Affiliation: Korean Baduk Association
+Bio:]
+;B[pc]C[First: Tingyu  
+Last: Fan
+Rank: 9p
+Country: CN
+Affiliation: Chinese Weiqi Association
 Bio:]
 )
