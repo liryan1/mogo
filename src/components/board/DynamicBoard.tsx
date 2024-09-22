@@ -13,24 +13,14 @@ export function DynamicBoard({ moves }: DynamicBoardProps) {
 
   useEffect(() => {
     const updateBoardSize = () => {
-      const width = window.innerWidth;
+      const width = document.documentElement.clientWidth;
       // Set board size to viewport width for mobile, and 750px for larger screens
       setBoardSize(width < 768 ? width - 20 : 750); // Adjusts for padding/margins
     };
-
-    const handleResize = () => {
-      // Android often needs this to ensure the resize happens smoothly
-      setTimeout(updateBoardSize, 30); // Adding a small delay to ensure viewport updates are accounted for
-    };
-
     updateBoardSize();
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("orientationchange", handleResize); // Listen for orientation changes on mobile devices
+    window.addEventListener("resize", updateBoardSize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("orientationchange", handleResize);
-    };
+    return () => window.removeEventListener("resize", updateBoardSize);
   }, []);
 
   return (
