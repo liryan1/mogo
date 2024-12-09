@@ -31,12 +31,14 @@ export interface StonePosition {
 }
 
 export interface OneWorldPlayerInfo {
-  title?: string
-  first: string
-  last: string
-  rank: string
-  country: string // 2-letter country code
-  imageFileName?: string
-  affiliation?: string
-  bio: string
+  title?: string;
+  first: string;
+  last: string;
+  rank: string;
+  country: string; // 2-letter country code
+  imageFileName?: string;
+  affiliation?: string;
+  bio: string;
 }
+
+export type Board = string[][];
