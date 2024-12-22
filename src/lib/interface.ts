@@ -8,9 +8,12 @@ export enum StoneColor {
   WHITE = "white",
 }
 
-export interface OneWorldMove {
+export interface GoMove {
   color: StoneColor;
   coordinate: Coordinate;
+}
+
+export interface OneWorldMove extends GoMove {
   player: OneWorldPlayerInfo;
 }
 

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Board, Coordinate } from "./interface";
+import { Board, Coordinate, GoMove } from "./interface";
 import { handleMove } from "./logic";
 
 export function makeEmptyBoard(size: number = 19) {
@@ -37,6 +37,14 @@ export class GoGame {
       lastMove: initialLastMove,
     };
     this.history = [initialBoardInfo];
+  }
+
+  static fromMoves(moves?: GoMove[]) {
+    const game = new GoGame();
+    moves?.map((move) => {
+      game.playMove(move.coordinate);
+    });
+    return game;
   }
 
   public getBoard() {
